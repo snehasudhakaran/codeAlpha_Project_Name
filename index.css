@@ -85,3 +85,32 @@ button{
     margin:auto;
     margin-top: 25px;
 }
+
+@media screen and (min-device-width:320px) and (max-device-width:400px){
+    .container{
+        width:90%;
+       
+    }
+    .section{
+        display:grid;
+        grid-template-columns: 100%;
+    }
+    .section2{
+        background:  #016067;
+        color:white;
+        position:relative;
+        width:102%;
+        top:10px;
+        left:-3px;
+        padding: 10px;
+    }
+    .section2 input {
+        background: none;
+        color:white;
+        border:none;
+        font-size: 20px;
+        text-align: center;
+        outline: none;
+    }
+    
+}
