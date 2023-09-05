@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <link rel="stylesheet" href="temperature.css">
+</head>
+<body>
+
+    <div class="container">
+       
+        <div class="section">
+            <div class="section1">
+                <div class="header">
+                    <h1 class="heading">Temperature converter</h1>
+                </div>
+                <h4>Enter Temperature</h4>
+                <h6>Degree</h6>
+                <input type="number" placeholder="Enter value" id="temperature">
+                <select id="fromSelect">
+                    <option value="fahrenheit">°F</option>
+                    <option value="celsius">°C</option>
+                    <option value="kelvin">°K</option>
+                </select>
+                <h6>Convert In</h6>
+                <select id="toSelect">
+                    <option value="fahrenheit">Fahrenheit (°F)</option>
+                    <option value="celsius">Celsius (°C)</option>
+                    <option value="kelvin">Kelvin (°K)</option>
+                </select><br>
+                <button type="button" class="button" id="convert" onclick="convertButton()" >Convert</button>
+            </div>
+            <div class="section2">
+                <input type="text" value="0°C" id="result">
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+
+        let inputElement = document.querySelector("#temperature");
+        let resultElement = document.querySelector("#result");
+        let fromSelectElement = document.querySelector("#fromSelect");
+        let toSelectElement = document.querySelector("#toSelect");
+        let convert = document.querySelector("#convert");
+        let celsius = "";
+        let fahrenheit = "";
+        let kelvin = "";
+
+        function convertButton(){
+
+            let inputValue = Number(inputElement.value);
+            let fromSelectValue = fromSelectElement.value;
+            let toSelectValue = toSelectElement.value;
+            
+            if (fromSelectValue===toSelectValue){
+                alert("Please don't select same value");
+                result="";
+            }else if (fromSelectValue==="fahrenheit" && toSelectValue ==="celsius"){
+                celsius = (inputValue-32)*(5/9);
+                result = celsius.toFixed(2) + " °C";
+            }else if (fromSelectValue==="fahrenheit" && toSelectValue ==="kelvin"){
+                kelvin = (inputValue-32)*(5/9)+273.15;
+                result = kelvin.toFixed(2) + " °K";
+            }else if (fromSelectValue==="celsius" && toSelectValue ==="fahrenheit"){
+                fahrenheit = (inputValue*(9/5))+32;
+                result = fahrenheit.toFixed(2) + " °F";
+            }else if (fromSelectValue==="celsius" && toSelectValue ==="kelvin"){
+                kelvin = (inputValue + 273.15);
+                result = kelvin.toFixed(2) + " °k";
+            }else if (fromSelectValue==="kelvin" && toSelectValue ==="fahrenheit"){
+                fahrenheit = (inputValue-273.15)*(9/5)+32;
+                result = fahrenheit.toFixed(2) + " °F";
+            }else if (fromSelectValue==="kelvin" && toSelectValue ==="celsius"){
+                celsius = (inputValue-273.15);
+                result = celsius.toFixed(2) + " °C";
+            }
+
+            if(result===""){
+            resultElement.value = "0°C";
+            }else{
+                resultElement.value = result;
+            }
+
+        };
+
+    </script>
+
+</body>
+</html>
